@@ -76,7 +76,7 @@ function Settings(props) {
           borderRadius: '8px',
         }}
       >
-        <div style={{ marginRight: '25px' }}>API KEY</div>
+        <div style={{ marginRight: '25px' }}>Access Token</div>
         <input
           type='text'
           onInput={(e) => {
@@ -97,7 +97,7 @@ function Settings(props) {
           borderRadius: '8px',
         }}
       >
-        <div style={{ marginRight: '25px' }}>Shop Name</div>
+        <div style={{ marginRight: '25px' }}>Store Domain</div>
         <input
           type='text'
           onInput={(e) => {
