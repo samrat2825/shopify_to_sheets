@@ -19,7 +19,7 @@ const initialState = {
 };
 
 const authReducer = (state = initialState, action) => {
-  console.log(action.type, action.token);
+  // console.log(action.type, action.token);
   if (action.type === SIGN_IN) {
     return {
       ...state,

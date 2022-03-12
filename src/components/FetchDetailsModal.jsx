@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getConfig } from '../helper/firebaseMethods/index';
 import Client from 'shopify-buy';
 import { setLoading, resetLoading } from '../redux/Actions/actions';
+import exportFromJSON from 'export-from-json';
 
 function FetchDetailsModal(props) {
   const [apikey, setApikey] = useState('');
@@ -11,6 +12,12 @@ function FetchDetailsModal(props) {
   const [endpoint, setEndpoint] = useState('');
 
   let client = '';
+  const fileName = 'download';
+  const exportType = 'xls';
+
+  const ExportToExcel = (data) => {
+    exportFromJSON({ data, fileName, exportType });
+  };
 
   useEffect(() => {
     getConfig()
@@ -84,19 +91,27 @@ function FetchDetailsModal(props) {
   };
 
   const submit = () => {
-    let result;
+    if (error.length) {
+      props.openFetchingCurrData(false);
+      return;
+    }
+
+    let result = [{ 0: '' }, { 1: '' }];
     setLoading();
     props.openFetchingCurrData(false);
     if (endpoint === 'Products') {
       result = JSON.parse(JSON.stringify(fetchProducts()));
     } else if (endpoint === 'Shop Policy') {
-      props.setEndpoint('Shop Policy');
       result = JSON.parse(JSON.stringify(fetchShopPolicy()));
     } else {
-      props.setEndpoint('Shop Info');
       result = JSON.parse(JSON.stringify(shopInfo()));
     }
+    if (Object.keys(result).length == 0) {
+      result = [{ 0: '' }, { 1: '' }];
+    }
     resetLoading();
+    // console.log(result, Object.keys(result).length);
+    ExportToExcel(result);
   };
 
   return (
@@ -115,7 +130,16 @@ function FetchDetailsModal(props) {
         padding: '10px',
       }}
     >
-      {error.length ? error : ''}
+      <div
+        style={{
+          color: 'red',
+          marginBottom: '10px',
+          fontWeight: 'bold',
+          fontSize: 30,
+        }}
+      >
+        {error.length ? error : ''}
+      </div>
       <div style={{ fontSize: 25, fontWeight: 'bold' }}>Details</div>
       <div
         style={{

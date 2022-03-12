@@ -4,6 +4,7 @@ import { firestore } from '../firebaseSetup';
 import { store } from '../redux/Store/store';
 import Setting from '../components/Settings';
 import FetchData from '../components/FetchData';
+import { signOut } from '../redux/Actions/actions';
 
 const Dashboard = (props) => {
   const [settings, openUserSettings] = useState(false);
@@ -65,8 +66,8 @@ const Dashboard = (props) => {
 
         <input
           type='button'
-          value='Show Last Fetched Data'
-          onClick={showStoreDetails}
+          value='Sign Out'
+          onClick={signOut}
           className='Button3'
           style={{
             borderRadius: '8px',
