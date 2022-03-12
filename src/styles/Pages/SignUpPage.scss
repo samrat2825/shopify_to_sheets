@@ -1,0 +1,58 @@
+.nav-container {
+  background-color: $white;
+  height: 100%;
+
+  .signin-container {
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 3%;
+
+    .signin-logo {
+      width: 15%;
+    }
+
+    .sign-in-form {
+      width: 25%;
+      padding-top: 3%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+
+      .form-element {
+        width: 100%;
+        padding: 15px 0px;
+        height: auto;
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus,
+        select:-webkit-autofill,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus {
+          -webkit-text-fill-color: $black;
+          transition: background-color 5000s ease-in-out 0s;
+        }
+
+        .form-input {
+          width: 100%;
+          height: 100%;
+          border: none;
+          background: none;
+          outline: none;
+          color: $black;
+          border-bottom: 1px solid $grey-medium;
+          font: 400 16px $font-style-1;
+          padding-left: 1px;
+          padding-bottom: 5px;
+        }
+      }
+    }
+  }
+}

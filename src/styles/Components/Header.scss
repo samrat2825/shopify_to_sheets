@@ -1,0 +1,33 @@
+.header {
+  background-color: $white;
+  width: 100%;
+  min-height: 79px;
+  height: 10.11vh;
+  display: flex;
+  box-shadow: 2px 4px 28px rgba(0, 0, 0, 0.07);
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 10px;
+}
+
+.logo {
+  height: 37px;
+  width: 162px;
+  left: 55px;
+  top: 20px;
+  border-radius: 0px;
+  padding: 1%;
+
+  img {
+    width: 162px;
+    height: 37px;
+  }
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}

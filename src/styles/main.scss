@@ -1,0 +1,10 @@
+@import './Abstracts/_variables.scss';
+@import './Abstracts/_common.scss';
+@import './Abstracts/_mixins.scss';
+// Components
+@import './Components/Header.scss';
+@import './Components/Navigation.scss';
+@import './Components/Loader.scss';
+// Pages
+@import './Pages/SignUpPage.scss';
+@import './Pages/Dashboard.scss';

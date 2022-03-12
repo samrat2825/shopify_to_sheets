@@ -1,0 +1,96 @@
+$shed-width: 250px;
+
+.loader {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  z-index: 10000;
+  top: 0;
+
+  .loaderLogoContainer {
+    position: relative;
+  }
+
+  .shed {
+    width: $shed-width;
+  }
+
+  $dotContainer-width: calc($shed-width / 2.5);
+  $dots-width: calc($shed-width + 20vw);
+  $dot-width: calc($shed-width / 9.43);
+
+  .dotContainer {
+    position: absolute;
+    bottom: calc($shed-width / 35);
+    background: $red;
+    width: calc($dotContainer-width);
+    height: calc($dotContainer-width / 3);
+    overflow: hidden;
+    left: calc(($shed-width - $dotContainer-width) / 2);
+  }
+
+  .dots {
+    position: relative;
+    width: $dots-width;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    filter: blur(4px) contrast(18);
+    mix-blend-mode: screen;
+    transition: all 0.2s ease;
+    transform: translate(
+      calc($dots-width / -2 + $dotContainer-width / 2),
+      calc($shed-width / 9.43 - 27vh + 8px)
+    );
+
+    @keyframes evolve-left {
+      0% {
+        left: $dot-width;
+      }
+      50%,
+      80% {
+        left: -10px;
+      }
+      100% {
+        left: $dot-width;
+      }
+    }
+    @keyframes evolve-right {
+      0% {
+        right: $dot-width;
+      }
+      50%,
+      80% {
+        right: -10px;
+      }
+      100% {
+        right: $dot-width;
+      }
+    }
+
+    .dot {
+      position: relative;
+      border-radius: 50%;
+      width: $dot-width;
+      height: $dot-width;
+      background-color: black;
+      animation: 1.1s linear infinite both;
+
+      &.dot1 {
+        left: $dot-width;
+        animation-name: evolve-left;
+      }
+      &.dot3 {
+        animation-name: evolve-right;
+        // animation-delay: 0.5s;
+      }
+    }
+  }
+}
