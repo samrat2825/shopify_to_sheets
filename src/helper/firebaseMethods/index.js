@@ -7,16 +7,9 @@ export const authGaurdLogin = async (email, password) => {
   setLoading();
   await auth
     .signInWithEmailAndPassword(email, password)
-    .then(async (userCredential) => {
+    .then((userCredential) => {
       let token = firebase.auth().currentUser;
       signIn(token);
-      const uid = token.uid;
-      let newConfig = {};
-      newConfig['refreshes'] = '1';
-      newConfig['apikey'] = '';
-      newConfig['shop'] = '';
-      newConfig['timeout'] = '300';
-      await firestore.collection('users').doc(uid).set({ newConfig });
     })
     .catch((error) => {
       alert(error);
@@ -28,9 +21,20 @@ export const authGaurdSignUp = async (email, password) => {
   setLoading();
   await auth
     .createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
+    .then(async (userCredential) => {
       let token = firebase.auth().currentUser;
       signIn(token);
+      const uid = token.uid;
+      let newConfig = {};
+      newConfig['refreshes'] = '1';
+      newConfig['apikey'] = '';
+      newConfig['shop'] = '';
+      newConfig['timeout'] = '300';
+      await firestore
+        .collection('users')
+        .doc(uid)
+        .set({ ...newConfig });
+      // console.log(uid, { ...newConfig });
     })
     .catch((error) => {
       console.log(error);
@@ -41,7 +45,10 @@ export const authGaurdSignUp = async (email, password) => {
 
 export const setConfig = async (config) => {
   const uid = store.getState().user.uid;
-  await firestore.collection('users').doc(uid).set({ config });
+  await firestore
+    .collection('users')
+    .doc(uid)
+    .set({ ...config });
 };
 
 export const getConfig = async () => {
@@ -55,5 +62,6 @@ export const getConfig = async () => {
       config = res.data();
     })
     .catch((e) => console.log(e));
+  // console.log(config, 'firestore');
   return config;
 };

@@ -32,10 +32,11 @@ function Settings(props) {
   useEffect(() => {
     getConfig()
       .then((res) => {
-        setRefreshes(res.config.refreshes);
-        setApikey(res.config.apikey);
-        setShop(res.config.shop);
-        setTimeout(res.config.timeout);
+        // console.log(res, 'setting');
+        setRefreshes(res.refreshes);
+        setApikey(res.apikey);
+        setShop(res.shop);
+        setTimeout(res.timeout);
       })
       .catch((e) => console.log(e));
   }, []);

@@ -22,13 +22,13 @@ const SignUpPage = (props) => {
 
   const submitHandlerSignUp = () => {
     authGaurdSignUp(email, password)
-      .then((res) => console.log(res))
+      .then((res) => {})
       .catch((e) => console.log(e));
   };
 
   const submitHandlerLogin = () => {
     authGaurdLogin(email, password)
-      .then((res) => console.log(res))
+      .then((res) => {})
       .catch((e) => console.log(e));
   };
 
