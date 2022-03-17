@@ -42,7 +42,7 @@ export async function getProductsInCollection(storefrontAccessToken, domain) {
                 amount
               }
             }
-            images(first: 5) {
+            images(first: 1) {
               edges {
                 node {
                   originalSrc
@@ -70,8 +70,22 @@ export async function getAllProducts(storefrontAccessToken, domain) {
     products(first: 250) {
       edges {
         node {
-          handle
           id
+            title
+            handle
+            priceRange {
+              minVariantPrice {
+                amount
+              }
+            }
+            images(first: 1) {
+              edges {
+                node {
+                  originalSrc
+                  altText
+                }
+              }
+            }
         }
       }
     }

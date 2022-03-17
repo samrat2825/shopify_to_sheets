@@ -153,8 +153,8 @@ function FetchDetailsModal(props) {
         <div style={{ marginRight: '25px' }}>Endpoint</div>
         <select id='endpoint' onChange={handleEndpoint}>
           <option value='Products'>Products</option>
-          <option value='Shop Policy'>Shop Policy</option>
-          <option value='Shop Info'>Shop Info</option>
+          <option value='Shop Policy'>Home Page</option>
+          {/* <option value='Shop Info'>Shop Info</option> */}
         </select>
       </div>
       <input
